@@ -1,0 +1,25 @@
+<!-- src/app/components/productos/productos.component.html -->
+<div class="productos-container">
+    <h1>Productos de Upbiker</h1>
+    
+    <div class="producto-form">
+      <input type="text" placeholder="Nombre del Producto" [(ngModel)]="nuevoProducto.nombre">
+      <input type="number" placeholder="Precio" [(ngModel)]="nuevoProducto.precio">
+      <input type="text" placeholder="Categoría" [(ngModel)]="nuevoProducto.categoria">
+      <button (click)="agregarProducto(nuevoProducto)">Agregar Producto</button>
+    </div>
+  
+    <div class="productos-list">
+      <h2>Lista de Productos</h2>
+      <div *ngFor="let producto of productos" class="producto-item">
+        <img src="/assets/img/bici1.jpg" alt="{{ producto.nombre }}">
+        <div class="producto-info">
+          <h3>{{ producto.nombre }}</h3>
+          <p>Precio: ${{ producto.precio }}</p>
+          <p>Categoría: {{ producto.categoria }}</p>
+          <button (click)="eliminarProducto(producto)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,31 @@
+<!-- src/app/components/inventario/inventario.component.html -->
+<div class="inventario-container">
+    <h1>Inventario de Upbiker</h1>
+    
+    <div class="inventario-form">
+      <input type="text" placeholder="Nombre del Producto" #nombre>
+      <input type="number" placeholder="Precio" #precio>
+      <input type="text" placeholder="Categoría" #categoria>
+      <button (click)="agregarProducto(nombre.value, +precio.value, categoria.value)">Agregar Producto</button>
+    </div>
+  
+    <div class="inventario-list">
+      <h2>Inventario</h2>
+      <div *ngFor="let categoria of categorias" class="inventario-categoria">
+        <h3>{{ categoria }}</h3>
+        <div *ngFor="let producto of listarProductos(categoria)" class="producto-item">
+          <img src="/assets/img/bici2.jpg" alt="{{ producto.nombre }}">
+          <div class="producto-info">
+            <h3>{{ producto.nombre }}</h3>
+            <p>Precio: ${{ producto.precio }}</p>
+            <button (click)="eliminarProducto(producto.nombre, categoria)">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="inventario-total">
+      <h2>Valor Total del Inventario: ${{ calcularValorTotal() }}</h2>
+    </div>
+  </div>
+  
